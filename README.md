@@ -2,6 +2,14 @@
 Realtek RTL8188GU Driver for TP-link TL-WN725N USB wifi
 
 
+# How to query USB WLAN model ?
+ 
+```
+pi@raspberrypi:~ $ lsusb|grep WLAN
+Bus 001 Device 007: ID 0bda:b711 Realtek Semiconductor Corp. RTL8188GU 802.11n WLAN Adapter (After Modeswitch)
+```
+you can see WLAN model is "RTL8188GU"
+
 # For Raspberry PI (ARM)
 ## 1. Source installation
 
@@ -31,7 +39,7 @@ sudo make install
  Install the required packages and reboot
 
 ```
-sudo apt install -y dkms raspberrypi-kernel-headers raspberrypi-kernel raspberrypi-bootloader bc build-essential git
+sudo apt install -y dkms raspberrypi-kernel-headers raspberrypi-kernel raspberrypi-bootloader bc build-essential git dh-make
 
 sudo reboot
 ```
@@ -69,7 +77,7 @@ pi@raspberrypi:/usr/src $ sudo dkms status
  Install the required packages and reboot
 
 ```
-sudo apt install -y dkms raspberrypi-kernel-headers raspberrypi-kernel raspberrypi-bootloader bc build-essential git
+sudo apt install -y dkms raspberrypi-kernel-headers raspberrypi-kernel raspberrypi-bootloader bc build-essential git dh-make
 
 sudo reboot
 ```
@@ -171,7 +179,7 @@ sudo make install
  Install the required packages and reboot
 
 ```
-sudo apt install -y dkms git build-essential linux-headers-$(uname -r)
+sudo apt install -y dkms git build-essential linux-headers-$(uname -r) dh-make
 
 ```
 
@@ -278,7 +286,7 @@ pi@raspberrypi:/usr/src $ sudo dkms status
 8188gu, 1.0.1, 5.10.103+, armv6l: installe
 
 ```
-## 4. only binary driver deb （The corresponding kernel version is required）
+## 4. only binary driver deb installation（The corresponding kernel version is required）
 ```
 dpkg -i 8188gu-modules-5.13.0-37-generic_1.0.1_amd64.deb
 ```

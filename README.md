@@ -45,8 +45,8 @@ cd /usr/src
 sudo git clone https://github.com/wandercn/RTL8188GU.git 8188gu-1.0.1
 
 sudo cd RTL8188GU/8188gu-1.0.1
-mv 8188gu-1.0.1 ../ 
-rm -rf RTL8188GU
+sudo mv 8188gu-1.0.1 ../ 
+sudo rm -rf RTL8188GU
 
 sudo dkms add -m 8188gu -v 1.0.1 
 

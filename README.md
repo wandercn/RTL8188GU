@@ -207,7 +207,52 @@ pi@raspberrypi:/usr/src $ sudo dkms status
 make only binary driver deb for help others
 
 ```
-sudo mkbmdeb -m 8188gu -v 1.0.1
+sudo dkms mkbmdeb -m 8188gu -v 1.0.1
+
+Using /etc/dkms/template-dkms-mkbmdeb
+copying template...
+modifying debian/changelog...
+modifying debian/compat...
+modifying debian/control...
+modifying debian/copyright...
+modifying debian/README.Debian...
+modifying debian/rules...
+copying legacy postinstall template...
+Gathering binaries...Marking modules for 5.13.0-37-generic (x86_64) for archiving...
+
+Creating tarball structure to specifically accomodate binaries.
+
+Tarball location: /var/lib/dkms/8188gu/1.0.1/tarball//8188gu-1.0.1.dkms.tar.gz
+
+
+DKMS: mktarball completed.
+
+Copying DKMS tarball into DKMS tree...
+Building binary package...dpkg-buildpackage: 警告: 使用超级用户命令
+ dpkg-source --before-build .
+ fakeroot debian/rules clean
+dh_clean: warning: Compatibility levels before 9 are deprecated (level 7 in use)
+ debian/rules build
+ fakeroot debian/rules binary
+dh_installdirs: warning: Compatibility levels before 9 are deprecated (level 7 in use)
+dh_strip: warning: Compatibility levels before 9 are deprecated (level 7 in use)
+dh_compress: warning: Compatibility levels before 9 are deprecated (level 7 in use)
+dh_installdocs: warning: Compatibility levels before 9 are deprecated (level 7 in use)
+dh_installdeb: warning: Compatibility levels before 9 are deprecated (level 7 in use)
+dh_shlibdeps: warning: Compatibility levels before 9 are deprecated (level 7 in use)
+ dpkg-genbuildinfo --build=binary
+ dpkg-genchanges --build=binary >../8188gu-dkms-bin_1.0.1_amd64.changes
+dpkg-genchanges: info: binary-only upload (no source code included)
+ dpkg-source --after-build .
+
+
+DKMS: mkbmdeb completed.
+Moving built files to /var/lib/dkms/8188gu/1.0.1/bmdeb...
+Cleaning up temporary files...
+
+>> you can find deb file in /var/lib/dkms/8188gu/1.0.1/bmdeb/
+>> send the deb file to others for install driver 
+
 ```
 
 ## 3. deb installation

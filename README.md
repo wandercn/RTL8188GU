@@ -149,6 +149,9 @@ Cleaning up temporary files...
 ```
 dpkg -i 8188gu-modules-4.9.41-v7+_1.0.1_armhf.deb
 dpkg -i 8188gu-modules-5.10.103+_1.0.1_armhf.deb
+
+sudo depmod $(uname -r)
+sudo reboot
 ```
 # For Ubuntu PC(x86)
 
@@ -289,6 +292,9 @@ pi@raspberrypi:/usr/src $ sudo dkms status
 ## 4. only binary driver deb installation（The corresponding kernel version is required）
 ```
 dpkg -i 8188gu-modules-5.13.0-37-generic_1.0.1_amd64.deb
+
+sudo depmod $(uname -r)
+sudo reboot
 ```
 # Thanks
  [@McMCCRU](https://github.com/McMCCRU/rtl8188gu)

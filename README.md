@@ -10,6 +10,77 @@ Bus 001 Device 007: ID 0bda:b711 Realtek Semiconductor Corp. RTL8188GU 802.11n W
 ```
 you can see WLAN model is "RTL8188GU"
 
+# For Orange Pi 5 (ARM64)
+
+ build kernel to get linux-headers-legacy-rockchip-rk3588_X.X.X_arm64.deb
+ See [orangepi.cn](http://www.orangepi.cn/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-pi-5.html)
+```
+sudo apt install -y linux-headers-legacy-rockchip-rk3588_X.X.X_arm64.deb
+ ```
+
+import module for os_dep/linux/os_intfs.c, if got errors
+```
+// this is necessary for oragepi5
+sed -i '31i MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);' os_dep/linux/os_intfs.c
+ ```
+
+## 1. Source installation
+
+ Install the required packages and reboot
+
+```
+sudo apt install -y bc build-essential git
+
+sudo reboot
+
+```
+
+Get source code
+
+```
+git clone https://github.com/wandercn/RTL8188GU.git
+cd RTL8188GU/8188gu-1.0.1
+
+sudo make
+
+sudo make install
+
+```
+## 2. DKMS installation
+ Install the required packages and reboot
+
+```
+sudo apt install -y dkms bc build-essential git dh-make
+
+sudo reboot
+
+```
+
+DKMS install
+
+```
+
+cd /usr/src
+
+sudo git clone https://github.com/wandercn/RTL8188GU.git
+
+sudo mv RTL8188GU/8188gu-1.0.1 8188gu-1.0.1
+sudo rm -rf RTL8188GU
+
+sudo dkms add -m 8188gu -v 1.0.1 
+
+sudo dkms build -m 8188gu -v 1.0.1
+
+sudo dkms install -m 8188gu -v 1.0.1
+
+```
+check status
+
+```
+orangepi@orangepi5:~$ sudo dkms status
+8188gu, 1.0.1, 5.10.110-rockchip-rk3588, aarch64: installed
+
+```
 # For Raspberry PI (ARM)
 ## 1. Source installation
 
@@ -50,10 +121,9 @@ DKMS install
 
 cd /usr/src
 
-sudo git clone https://github.com/wandercn/RTL8188GU.git 8188gu-1.0.1
+sudo git clone https://github.com/wandercn/RTL8188GU.git
 
-sudo cd RTL8188GU/8188gu-1.0.1
-sudo mv 8188gu-1.0.1 ../ 
+sudo mv RTL8188GU/8188gu-1.0.1 8188gu-1.0.1
 sudo rm -rf RTL8188GU
 
 sudo dkms add -m 8188gu -v 1.0.1 

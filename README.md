@@ -1,6 +1,8 @@
 # RTL8188GU
 Realtek RTL8188GU Driver for TP-link TL-WN725N USB wifi
 
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/wandercn/RTL8188GU?color=peru)](https://github.com/wandercn/RTL8188GU/releases/latest)
+[![Downloads of releases](https://img.shields.io/github/downloads/wandercn/RTL8188GU/total.svg?color=lavender)](https://github.com/wandercn/RTL8188GU/releases/latest)
 
 # How to query USB WLAN model ?
  

@@ -264,10 +264,11 @@ DKMS install
 
 cd /usr/src
 
-sudo git clone https://github.com/wandercn/RTL8188GU.git 8188gu-1.0.1
+sudo git clone https://github.com/wandercn/RTL8188GU.git
 
-sudo cd RTL8188GU/8188gu-1.0.1
+cd RTL8188GU/8188gu-1.0.1
 sudo ./AMD_X86.sh
+cd ..
 sudo mv 8188gu-1.0.1 ../ 
 sudo rm -rf RTL8188GU
 
